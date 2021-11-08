@@ -15,14 +15,14 @@ const Appointments = ({date}) => {
     const [appoinments, setAppointments]=useState([]);
 
     useEffect(()=>{
-        fetch(`https://shielded-shore-27798.herokuapp.com/appointments?email=${user.email}&date=${date}`,{
+        fetch(`https://shielded-shore-27798.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`,{
           headers:{
             'authorization': `Bearer ${token}`
         },
         })
         .then(res=> res.json())
         .then(data=>setAppointments(data))
-    },[date, user.email])
+    },[date, user.email, token])
     return (
        <Box>
            <Typography>
